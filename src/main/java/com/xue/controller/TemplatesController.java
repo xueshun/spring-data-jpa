@@ -43,10 +43,18 @@ public class TemplatesController {
 		map.put("name", "Andy");
 		return mv;
 	}
+	
+	/**
+	 * Spring Boot 引入FreeMarker
+	 * @param map
+	 * @return
+	 */
 	@RequestMapping("/helloFtl")
-	public String helloFtl(Map<String,Object> map){
+	public ModelAndView helloFtl(Map<String,Object> map){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("helloFtl");
 		map.put("name","Andy");
-		return "helloFtl";
+		return mv;
 	}
 	
 	/**
