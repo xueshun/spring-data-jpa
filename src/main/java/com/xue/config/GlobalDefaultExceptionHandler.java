@@ -1,5 +1,7 @@
 package com.xue.config;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -22,11 +24,11 @@ public class GlobalDefaultExceptionHandler {
 	
 	@ExceptionHandler(Exception.class)
 	@ResponseBody
-	public ModelAndView defaultExceptionHandler(HttpServletRequest req,Exception e) {
+	public String defaultExceptionHandler(HttpServletRequest req,Exception e) throws UnsupportedEncodingException {
 		
-		ModelAndView mv = new ModelAndView();
+		/*ModelAndView mv = new ModelAndView();
 		mv.setViewName("1211");
-		return mv;
-		//return "对不起，服务器繁忙，请稍后再试！";
+		return mv;*/
+		return new String("服务器异常".getBytes(), "utf-8");
 	}
 }

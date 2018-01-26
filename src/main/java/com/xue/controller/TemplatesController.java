@@ -3,6 +3,7 @@ package com.xue.controller;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,21 +24,38 @@ public class TemplatesController {
 	 * 映射地址是：/templates/hello
 	 * @return
 	 */
+/*	@RequestMapping("/hello")
+	public String hello(Map<String,Object> map) {
+		//返回的是ModelAndView对象;
+//		ModelAndView mv = new ModelAndView("hello");
+//		
+//		return mv;
+		
+		map.put("name","Andy");
+	}*/
+	
 	@RequestMapping("/hello")
 	public ModelAndView hello(Map<String,Object> map) {
-		//返回的是ModelAndView对象;
-		ModelAndView mv = new ModelAndView("hello");
+		//model.addAttribute("name", "Andy");
+		//map.put("name", "Andy");
+		ModelAndView mv  = new ModelAndView();
+		mv.setViewName("/hello");
+		map.put("name", "Andy");
 		return mv;
-		
-		
-		/*map.put("name","Andy");
-		int i=1/0;
-		return "hello";*/
 	}
-	
 	@RequestMapping("/helloFtl")
 	public String helloFtl(Map<String,Object> map){
 		map.put("name","Andy");
 		return "helloFtl";
 	}
+	
+	/**
+	 * 返回html模板.
+	 */
+	@RequestMapping("/helloHtml")
+	public String helloHtml(Map<String,Object> map){
+		map.put("hello","from TemplateController.helloHtml");
+		return "/helloHtml";
+	}
+
 }

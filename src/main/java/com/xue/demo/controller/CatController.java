@@ -32,6 +32,7 @@ public class CatController {
 	
 	@RequestMapping("/getAll")
 	public Iterable<Cat> getAll(){
+		int i = 1/0;
 		return catService.getAll();
 	}
 	
